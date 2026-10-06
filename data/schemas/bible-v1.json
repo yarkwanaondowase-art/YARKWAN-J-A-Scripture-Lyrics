@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "YARKWAN J. A. Bible Library v1",
+  "type": "object",
+  "required": ["format", "title", "language", "verses"],
+  "properties": {
+    "format": {"const": "yarkwan-bible-v1"},
+    "title": {"type": "string"},
+    "language": {"type": "string"},
+    "copyright": {"type": "string"},
+    "verses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["book", "chapter", "verse", "text"],
+        "properties": {
+          "book": {"type": "string"},
+          "chapter": {"type": "integer", "minimum": 1},
+          "verse": {"type": "integer", "minimum": 1},
+          "text": {"type": "string"}
+        }
+      }
+    }
+  }
+}

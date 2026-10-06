@@ -1,0 +1,21 @@
+{
+  "format": "yarkwan-bible-v1",
+  "title": "King James Version — Demo",
+  "language": "English",
+  "copyright": "Public domain",
+  "books": [
+    {"name":"Genesis","verses":[
+      {"chapter":1,"verse":1,"text":"In the beginning God created the heaven and the earth."},
+      {"chapter":1,"verse":2,"text":"And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters."},
+      {"chapter":1,"verse":3,"text":"And God said, Let there be light: and there was light."}
+    ]},
+    {"name":"Psalms","verses":[
+      {"chapter":23,"verse":1,"text":"The LORD is my shepherd; I shall not want."},
+      {"chapter":23,"verse":2,"text":"He maketh me to lie down in green pastures: he leadeth me beside the still waters."},
+      {"chapter":23,"verse":3,"text":"He restoreth my soul: he leadeth me in the paths of righteousness for his name's sake."}
+    ]},
+    {"name":"John","verses":[
+      {"chapter":3,"verse":16,"text":"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."}
+    ]}
+  ]
+}

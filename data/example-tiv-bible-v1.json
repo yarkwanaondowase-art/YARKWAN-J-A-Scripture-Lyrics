@@ -1,0 +1,10 @@
+{
+  "format": "yarkwan-bible-v1",
+  "title": "Tiv Bible (development placeholder)",
+  "language": "Tiv",
+  "copyright": "Replace with the correct authorized copyright notice.",
+  "verses": [
+    {"book":"Genesis","chapter":1,"verse":1,"text":"PASTE AUTHORIZED TIV TEXT HERE."},
+    {"book":"Genesis","chapter":1,"verse":2,"text":"PASTE AUTHORIZED TIV TEXT HERE."}
+  ]
+}

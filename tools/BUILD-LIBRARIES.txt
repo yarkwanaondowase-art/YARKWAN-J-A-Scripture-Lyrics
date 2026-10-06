@@ -1,0 +1,16 @@
+YARKWAN J. A. Scripture & Lyrics — one-time library setup
+
+On the Windows computer that has internet access:
+
+1. Install Python 3.10+ if Python is not already installed.
+2. Open Command Prompt in this plugin folder.
+3. Run:
+   python tools\build-libraries.py
+
+This downloads and validates the complete KJV (66 books / 1,189 chapters /
+31,102 verses) and downloads the 1,200 Sacred Songs & Solos hymns, then writes:
+  data\libraries\kjv.json
+  data\libraries\sacred-songs-and-solos-1200.json
+
+After the files are built, the plugin can operate offline. The content is not
+loaded from a web service during worship.
