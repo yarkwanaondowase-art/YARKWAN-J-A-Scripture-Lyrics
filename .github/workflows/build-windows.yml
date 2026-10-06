@@ -1,0 +1,62 @@
+name: Build YARKWAN J. A. Scripture & Lyrics for OBS 32.2.2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    name: Build Windows x64
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout YARKWAN project
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get OBS plugin build system
+        uses: actions/checkout@v4
+        with:
+          repository: obsproject/obs-plugintemplate
+          path: _obs-template
+          fetch-depth: 1
+
+      - name: Prepare OBS build system
+        shell: pwsh
+        run: |
+          # The YARKWAN project was packaged without the template's .github tree.
+          # Copy the official build actions/scripts into the checked-out project
+          # only for this GitHub Actions run.
+          if (Test-Path .github) {
+            Remove-Item .github -Recurse -Force
+          }
+          Copy-Item _obs-template/.github .github -Recurse -Force
+
+          # Older project package did not include CMakePresets.json.
+          # Use the official template preset while keeping YARKWAN's own CMakeLists.txt.
+          if (-not (Test-Path CMakePresets.json)) {
+            Copy-Item _obs-template/CMakePresets.json CMakePresets.json -Force
+          }
+
+          Remove-Item _obs-template -Recurse -Force
+
+      - name: Build plugin
+        shell: pwsh
+        env:
+          CI: true
+        run: |
+          ./.github/scripts/Build-Windows.ps1 -Target x64 -Configuration RelWithDebInfo
+
+      - name: Package plugin
+        shell: pwsh
+        env:
+          CI: true
+        run: |
+          ./.github/scripts/Package-Windows.ps1 -Target x64 -Configuration RelWithDebInfo
+
+      - name: Upload Windows plugin
+        uses: actions/upload-artifact@v4
+        with:
+          name: yarkwan-j-a-scripture-lyrics-windows-x64
+          path: release/yarkwan-j-a-scripture-lyrics-0.5.1-windows-x64.zip
+          if-no-files-found: error
